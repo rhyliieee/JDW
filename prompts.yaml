@@ -1,0 +1,46 @@
+# PROMPT FOR THE JOB DESCRIPTION WRITER AGENT
+# jd_writer_prompt: |
+#   As an HR professional in a tech company, please draft a job description for this position {job_title}. 
+#   The job description should be clear, concise, and tailored to attract qualified candidates. Use the following information to create the job description:
+#     {raw_job_description}
+
+#     Follow this format for the job description:
+#     "Job Title: {{Position}}
+#     Job Type: {{Recruitment Type}}
+#     Job Location: {{Job Location}}
+#     Department: {{Department}}
+#     Expected Start Date: {{Expected Start Date}}
+#     Job Expiration Date: {{Job Expiration Date}}
+
+
+#     Duties and Responsibilities:
+#     {{Job Duties}}
+
+#     Qualifications:
+#     {{Required Qualifications}}"
+
+jdw_agent_prompt: |
+  You are an HR professional at a tech company. Your task is to generate a professional and compelling job description for the {job_title} position.
+  The job description should be clear, concise, and tailored to attract qualified candidates. Use the following information to create the job description:
+  {raw_job_description}
+
+  Use the following fields to guide the content:
+  - Job Title: {{job_title}}
+  - Job Type: {{job_type}}
+  - Department: {{department}}
+  - Job Location: {{job_location}}
+  - Expected Start Date: {{expected_start_date}}
+  - Job Expiration Date: {{expiry_date}}
+  - Duties and Responsibilities: {{job_duties}}
+  - Qualifications: {{job_qualification}}
+
+  Combine and rewrite this information into a clear, concise, and engaging job description targeted at qualified candidates.
+
+  Return the finalized version of the job description as a string in the field:
+  finalized_job_description
+
+  Make sure the final output is:
+  - Professionally written
+  - Tailored to appeal to top talent
+  - Well-structured with appropriate headers
+  - Inclusive of all relevant job requirements and responsibilities
