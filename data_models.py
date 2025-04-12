@@ -6,11 +6,11 @@ from typing import TypedDict, Annotated, List, Dict, Any, AnyStr, Optional
 class JobDataModel(BaseModel):
     job_title: str
     job_type: str
-    department: str
-    expiry_date: str
+    department: Annotated[Optional[str], "Only fill this field if a Department is stated from the original Content."]
+    expiry_date: Annotated[Optional[str], "Only fill this field if an Expiration Date is stated from the original Content."]
     job_duties: str
     job_qualification: str
-    expected_start_date: str
+    expected_start_date: Annotated[Optional[str], "Only fill this field if an Expected Start Date is stated from the original Content."]
     job_location: str
     finalized_job_description: Annotated[str, "COMPILED DESCRIPTION THAT CONTAINS ALL JOB REQUIREMENTS AND RESPONSIBILITIES"]
 
