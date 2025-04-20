@@ -24,9 +24,10 @@ import sys
 from typing_extensions import Callable, Dict, List, AnyStr, Any
 from dotenv import load_dotenv
 import logging
+from pathlib import Path
 
 # LOAD ENVIRONMENT VARIABLES 
-load_dotenv()
+load_dotenv(Path(".env"))
 
 # INITIALIZE CACHE MANAGER
 cache_manager = CacheManager()
@@ -195,7 +196,10 @@ async def start_writing(request:Request, writer_request: JDWRequest, background_
         }
     except HTTPException as http_exc:
         logger.error(f"HTTP EXCEPTION: {str(http_exc)}")
-        raise http_exc
+        return {
+            "trace_id": None,
+            "message": str(http_exc)
+        }
     except Exception as e:
         logger.error(f"GENERAL EXCEPTION: {str(e)}")
         return JSONResponse(content={"status":"error", "message": str(e)}, status_code=500)
