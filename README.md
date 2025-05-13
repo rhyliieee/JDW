@@ -102,15 +102,15 @@ JDW/
 ```mermaid
 graph TD
     subgraph User Interface
-        A[jobjigsawUI.py (Streamlit)]
+        A[jobjigsawUI.py - Streamlit]
     end
 
     subgraph Backend API
-        B[jdw_endpoint.py (FastAPI @ 8090)]
+        B[jdw_endpoint.py - FastAPI @ 8090]
     end
 
     subgraph Core Logic
-        C[graph.py (JDW Workflow)]
+        C[graph.py - JDW Workflow]
         D[agents.py]
         E[utils.py]
         F[data_models.py]
@@ -118,7 +118,7 @@ graph TD
     end
 
     subgraph External Services
-        H[LLM APIs (Groq, Mistral, OpenAI, etc.)]
+        H[LLM APIs - Groq, Mistral, OpenAI, etc.]
     end
 
     A -- JDW Requests --> B
@@ -127,8 +127,8 @@ graph TD
     C -- Uses --> F
     D -- Uses --> G
     D -- Calls --> H
-    B -- Uses --> E # For CacheManager
-    C -- Uses --> E # For CacheManager
+    B -- Uses --> E
+    C -- Uses --> E
 
 ```
 
